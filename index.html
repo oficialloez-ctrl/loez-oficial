@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOEZ | Hub Oficial - Press Kit</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070709;
+      --card: #111115;
+      --card-hover: #17171d;
+      --accent: #e61919;
+      --accent-glow: rgba(230, 25, 25, 0.35);
+      --spotify: #1DB954;
+      --tiktok: #00f2fe;
+      --instagram: #E1306C;
+      --whatsapp: #25D366;
+      --drive: #4285F4;
+      --mail: #ff9800;
+      --text: #f4f4f6;
+      --text-muted: #8e8e99;
+      --border: #202028;
+      --radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.5;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1.2rem 4rem;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(230, 25, 25, 0.22), transparent 45%),
+        radial-gradient(circle at 10% 90%, rgba(230, 25, 25, 0.08), transparent 30%);
+      min-height: 100vh;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 580px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    /* Perfil */
+    .profile {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 0.5rem;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+
+    .avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 30px var(--accent-glow);
+      background-color: var(--card);
+      display: block;
+    }
+
+    .verified-badge {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      background: var(--accent);
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      border: 3px solid var(--bg);
+    }
+
+    .artist-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .artist-tagline {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 440px;
+    }
+
+    /* Redes rápidas no topo */
+    .quick-socials {
+      display: flex;
+      justify-content: center;
+      gap: 0.9rem;
+      margin-top: 1.2rem;
+    }
+
+    .social-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .social-circle:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 18px var(--accent-glow);
+    }
+
+    .social-circle svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Player do Spotify */
+    .highlight-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      position: relative;
+    }
+
+    .highlight-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      color: var(--spotify);
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .highlight-label::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--spotify);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--spotify);
+    }
+
+    .spotify-player-wrap {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      min-height: 352px;
+    }
+
+    .spotify-frame {
+      width: 100%;
+      height: 352px;
+      border: none;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .spotify-player-wrap {
+        min-height: 260px;
+      }
+
+      .spotify-frame {
+        height: 260px;
+      }
+    }
+
+    /* Seções */
+    .section-heading {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.8rem;
+    }
+
+    .links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.05rem 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .link-item:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .link-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .link-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.04);
+      flex-shrink: 0;
+    }
+
+    .link-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .link-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .link-info .title {
+      font-size: 0.98rem;
+      font-weight: 700;
+    }
+
+    .link-info .desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .arrow-icon {
+      color: var(--text-muted);
+      font-size: 1.25rem;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .link-item:hover .arrow-icon {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    /* Galeria Mini */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-grid img:hover {
+      transform: scale(1.03);
+      border-color: var(--accent);
+    }
+
+    /* Botão Principal de Booking / WhatsApp */
+    .booking-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: 100%;
+      padding: 1.2rem;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      border-radius: 999px;
+      box-shadow: 0 6px 28px var(--accent-glow);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      transition: all 0.25s ease;
+    }
+
+    .booking-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(230, 25, 25, 0.65);
+      background: #f02424;
+    }
+
+    .booking-btn svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      margin-top: 1rem;
+    }
+  
+.photo-grid img {
+  cursor:pointer;
+  box-shadow:0 0 18px rgba(255,20,20,.12);
+}
+
+.photo-grid img:hover {
+  box-shadow:0 0 25px rgba(255,20,20,.45);
+}
+
+
+.video-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1rem;
+}
+
+.video-grid video{
+  width:100%;
+  border-radius:16px;
+  border:1px solid rgba(255,32,32,.45);
+  background:#000;
+  box-shadow:0 0 20px rgba(255,20,20,.18);
+}
+
+
+
+
+
+
+
+.video-carousel{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  width:100%;
+  padding-bottom:10px;
+}
+
+.video-card{
+  flex:0 0 100%;
+  scroll-snap-align:center;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(255,32,32,.5);
+  background:#000;
+}
+
+.video-card video{
+  width:100%;
+  aspect-ratio:9/16;
+  object-fit:cover;
+  display:block;
+  background:#000;
+}
+
+
+.video-carousel{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  align-items:flex-start;
+}
+
+.video-carousel::-webkit-scrollbar{
+  display:none;
+}
+
+.video-card{
+  flex:0 0 auto;
+  width:fit-content;
+  max-width:100%;
+  scroll-snap-align:center;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(255,32,32,.45);
+  background:#000;
+}
+
+.video-card video{
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  max-height:600px;
+  background:#000;
+}
+
+
+.video-wrapper{
+  position:relative;
+}
+
+.video-carousel{
+  display:flex;
+  gap:16px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  scrollbar-width:none;
+  scroll-behavior:smooth;
+}
+
+.video-carousel::-webkit-scrollbar{
+  display:none;
+}
+
+.video-nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:none;
+  background:rgba(255,32,32,.85);
+  color:white;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.video-nav.prev{left:8px;}
+.video-nav.next{right:8px;}
+
+.video-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-top:12px;
+}
+
+.video-dots span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#555;
+}
+
+.video-dots .active{
+  background:#ff2020;
+}
+
+.video-hint{
+  text-align:center;
+  color:#8e8e99;
+  font-size:.75rem;
+  margin-top:8px;
+}
+
+
+img, video {
+  max-width:100%;
+}
+
+.video-card video {
+  display:block;
+  width:100%;
+  height:auto;
+}
+
+.photo-grid img {
+  cursor:pointer;
+}
+
+
+.video-nav{
+  z-index:20;
+  cursor:pointer;
+  pointer-events:auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+
+.video-nav{
+  position:absolute !important;
+  z-index:9999 !important;
+  pointer-events:auto !important;
+  touch-action:manipulation;
+}
+
+.video-wrapper{
+  position:relative;
+  overflow:visible;
+}
+
+.video-carousel{
+  scroll-behavior:smooth;
+}
+
+
+.video-arrow{
+ position:absolute;
+ top:50%;
+ transform:translateY(-50%);
+ z-index:99999;
+ width:45px;
+ height:45px;
+ border-radius:50%;
+ border:none;
+ background:rgba(255,32,32,.9);
+ color:white;
+ font-size:32px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ cursor:pointer;
+ touch-action:manipulation;
+}
+
+.video-arrow.left{left:5px;}
+.video-arrow.right{right:5px;}
+
+.video-wrapper{
+ position:relative;
+}
+
+.video-wrapper{
+ position:relative;
+}
+
+.video-controls{
+ position:absolute;
+ top:45%;
+ left:0;
+ width:100%;
+ display:flex;
+ justify-content:space-between;
+ padding:0 10px;
+ z-index:1000;
+ pointer-events:none;
+}
+
+.video-controls button{
+ pointer-events:auto;
+ width:42px;
+ height:42px;
+ border-radius:50%;
+ border:0;
+ background:#ff2020;
+ color:#fff;
+ font-size:32px;
+ line-height:30px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+
+.video-arrow,
+.video-nav{
+  position:relative;
+  z-index:999999;
+  pointer-events:auto !important;
+  cursor:pointer;
+}
+
+#videoPrev,#videoNext{
+ position:absolute;
+ z-index:999999;
+ pointer-events:auto!important;
+ cursor:pointer;
+ touch-action:manipulation;
+}
+
+#videoPrev,#videoNext{
+  display:flex !important;
+  align-items:center;
+  justify-content:center;
+  z-index:999999;
+  pointer-events:auto !important;
+  cursor:pointer;
+}
+
+.loez-videos{
+  width:100%;
+}
+
+.loez-video-slider{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding-bottom:10px;
+}
+
+.loez-video-slider::-webkit-scrollbar{
+  display:none;
+}
+
+.loez-video-item{
+  flex:0 0 90%;
+  scroll-snap-align:center;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(255,32,32,.5);
+  background:#000;
+}
+
+.loez-video-item video{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
+
+.loez-video-indicator{
+  text-align:center;
+  margin-top:10px;
+  color:#888;
+  font-size:12px;
+}
+
+.loez-video-slider{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  align-items:flex-start;
+}
+
+.loez-video-slider::-webkit-scrollbar{
+  display:none;
+}
+
+.loez-video-item{
+  flex:0 0 auto;
+  width:auto;
+  max-width:100%;
+  scroll-snap-align:center;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(255,32,32,.5);
+  background:#000;
+}
+
+.loez-video-item video{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:650px;
+  object-fit:contain;
+}
+
+
+.youtube-link{display:block;text-align:center;margin:12px 0;color:white}
+</style>
+</head>
+<body>
+
+  <div class="wrapper">
+
+    <!-- Topo Perfil LOEZ -->
+    <div class="profile">
+      <div class="avatar-wrapper">
+        <img class="avatar" src="imagem_1.jpg" alt="LOEZ" />
+        <div class="verified-badge">✓</div>
+      </div>
+      <h1 class="artist-name">LOEZ</h1>
+      <p class="artist-tagline">Trajetória, lançamentos exclusivos e agenda oficial de shows.</p>
+
+      <!-- Ícones Rápidos -->
+      <div class="quick-socials">
+        <a href="https://open.spotify.com/intl-pt/artist/6dl2N1fEzJjBRmLcF1Xfb0" target="_blank" class="social-circle" aria-label="Spotify">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.35-1.436-5.308-1.76-8.792-.963-.335.077-.67-.133-.747-.468-.077-.335.132-.67.467-.747 3.81-.871 7.08-.507 9.722 1.114.294.18.386.563.207.857zm1.225-2.724c-.228.373-.717.49-1.09.262-2.69-1.654-6.79-2.133-9.972-1.167-.42.128-.863-.112-.991-.532-.128-.42.112-.863.532-.991 3.633-1.103 8.147-.568 11.26 1.348.373.228.49.717.261 1.09zm.106-2.835C14.692 8.95 9.375 8.775 6.297 9.71c-.494.15-1.02-.13-1.17-.624-.15-.494.13-1.02.624-1.17 3.533-1.072 9.404-.863 13.115 1.338.445.264.59.838.327 1.282-.264.444-.838.59-1.282.327z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/loez_oficial" target="_blank" class="social-circle" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@felipe.lois3" target="_blank" class="social-circle" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        </a>
+        <a href="https://wa.me/message/STJ24CSJTVZ6M1" target="_blank" class="social-circle" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Player Oficial do Spotify do LOEZ -->
+    <div class="highlight-card">
+      <div class="highlight-label">Spotify Oficial</div>
+      <div class="spotify-player-wrap">
+        <iframe 
+          class="spotify-frame" 
+          src="https://open.spotify.com/embed/artist/6dl2N1fEzJjBRmLcF1Xfb0?utm_source=generator&theme=0&si=1" 
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+
+    
+    <!-- Galeria de Shows -->
+    <div>
+      <h2 class="section-heading">Galeria de Shows</h2>
+      <div class="photo-grid">
+
+        <img src="imagem_2.jpg" alt="Show LOEZ">
+
+        <img src="imagem_3.jpg" alt="Show LOEZ">
+
+        <img src="imagem_4.jpg" alt="Show LOEZ">
+
+      </div>
+    </div>
+
+
+    
+    
+    
+<!-- Vídeos LOEZ NOVO -->
+<section class="loez-videos">
+<h2 class="section-heading">VÍDEOS</h2>
+<div class="loez-video-slider">
+<article class="loez-video-item"><video controls playsinline preload="metadata"><source src="./videos/loez-instagram.mp4" type="video/mp4"></video></article>
+<article class="loez-video-item"><video controls playsinline preload="metadata"><source src="./videos/loez-oficial-web.mp4" type="video/mp4"></video></article>
+<article class="loez-video-item"><video controls playsinline preload="metadata"><source src="./videos/loez-pb-web.mp4" type="video/mp4"></video></article>
+</div>
+<div class="loez-video-indicator">Deslize para ver mais vídeos →</div>
+</section>
+
+<!-- Presskit Oficial -->
+<section>
+  <h2 class="section-heading">PRESS KIT</h2>
+  <div class="links-list">
+    <a href="https://drive.google.com/drive/folders/14PS-vrWQT3ey43JRZYdyanPlSXmgB9Ma?usp=drive_link" target="_blank" class="link-item">
+      <div class="link-left">
+        <div class="link-icon" style="color:#ff2020;">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M3 6a2 2 0 0 1 2-2h6l2 3h6a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6z"/>
+          </svg>
+        </div>
+        <div class="link-info">
+          <span class="title">Presskit Oficial</span>
+          <span class="desc">Arquivos, fotos, releases e mídia kit</span>
+        </div>
+      </div>
+      <span class="arrow-icon">→</span>
+    </a>
+  </div>
+</section>
+
+<script>
+(function(){
+  function initCarousel(){
+    const carousel = document.getElementById('videoCarousel');
+    const next = document.getElementById('videoNext');
+    const prev = document.getElementById('videoPrev');
+
+    if(!carousel || !next || !prev) return;
+
+    next.onclick = function(e){
+      e.preventDefault();
+      carousel.scrollLeft = carousel.scrollLeft + carousel.clientWidth;
+    };
+
+    prev.onclick = function(e){
+      e.preventDefault();
+      carousel.scrollLeft = carousel.scrollLeft - carousel.clientWidth;
+    };
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initCarousel);
+  } else {
+    initCarousel();
+  }
+})();
+</script>
+
+</div>
+
+<script>const yp=document.getElementById("youtubePlay");if(yp){yp.onclick=()=>{document.getElementById("youtubeBox").innerHTML='';};}</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const videos = document.querySelectorAll("video");
+
+    videos.forEach(video => {
+        video.addEventListener("play", function () {
+            videos.forEach(outroVideo => {
+                if (outroVideo !== video) {
+                    outroVideo.pause();
+                }
+            });
+        });
+    });
+});
+</script>
+
+</body>
+</html>
