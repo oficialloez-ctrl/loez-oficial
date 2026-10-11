@@ -731,6 +731,8 @@ img, video {
 .loez-video-slider .loez-video-link{flex:0 0 min(75vw,260px);width:min(75vw,260px);min-height:230px;box-sizing:border-box;scroll-snap-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:16px;border-radius:18px;border:1px solid rgba(255,32,32,.55);background:linear-gradient(145deg,#1a1217,#08080a);color:white;text-decoration:none;text-align:center;padding:20px}
 .loez-video-link-icon{display:grid;place-items:center;width:62px;height:62px;border:2px solid #f22;border-radius:50%;color:#fff;font-size:25px}
 .loez-video-link strong{font-size:20px;letter-spacing:.08em}.loez-video-link span:last-child{font-size:13px;color:#ddd}
+.loez-video-slider .loez-video-item{flex:0 0 min(80vw,340px);width:min(80vw,340px);max-width:340px;box-sizing:border-box;scroll-snap-align:center;display:flex;align-items:center;justify-content:center}
+.loez-video-slider .loez-video-item video{display:block;width:100%;height:auto;max-height:590px;aspect-ratio:9/16;object-fit:contain;background:#000}
 </style>
 </head>
 <body>
@@ -798,10 +800,10 @@ img, video {
 <!-- Vídeos LOEZ NOVO -->
 <section class="loez-videos">
 <h2 class="section-heading">VÍDEOS</h2>
-<div class="loez-video-slider" aria-label="Links dos vídeos LOEZ">
-  <a class="loez-video-link" href="https://www.instagram.com/reel/DNlLvGXRHIL/" target="_blank" rel="noopener noreferrer"><span class="loez-video-link-icon">▶</span><strong>VÍDEO 1</strong><span>Assistir no Instagram ↗</span></a>
-  <a class="loez-video-link" href="https://www.instagram.com/reel/Dc3N-u3xsTA/" target="_blank" rel="noopener noreferrer"><span class="loez-video-link-icon">▶</span><strong>VÍDEO 2</strong><span>Assistir no Instagram ↗</span></a>
-  <a class="loez-video-link" href="https://vt.tiktok.com/ZSbccH6fK/" target="_blank" rel="noopener noreferrer"><span class="loez-video-link-icon">▶</span><strong>VÍDEO 3</strong><span>Assistir no TikTok ↗</span></a>
+<div class="loez-video-slider" aria-label="Carrossel de vídeos LOEZ">
+  <article class="loez-video-item"><video controls playsinline preload="metadata"><source src="./video-1.mp4" type="video/mp4">Seu navegador não suporta vídeo.</video></article>
+  <article class="loez-video-item"><video controls playsinline preload="metadata"><source src="./video-2.mp4" type="video/mp4">Seu navegador não suporta vídeo.</video></article>
+  <article class="loez-video-item"><video controls playsinline preload="metadata"><source src="./video-3.mp4" type="video/mp4">Seu navegador não suporta vídeo.</video></article>
 </div>
 <div class="loez-video-indicator">Deslize para ver mais vídeos →</div>
 </section>
