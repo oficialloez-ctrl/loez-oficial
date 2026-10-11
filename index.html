@@ -722,6 +722,12 @@ img, video {
 .loez-tiktok-card{justify-content:center;min-height:170px;background:linear-gradient(135deg,#17171b,#290d13)}
 .loez-tiktok-card p{font-size:.83rem;color:#bbb}
 @media(max-width:480px){.loez-social-video-grid{grid-template-columns:1fr}.loez-social-video iframe{height:490px}}
+.loez-video-slider .loez-embed-item{flex:0 0 min(82vw,330px);width:min(82vw,330px);max-width:330px;display:flex;flex-direction:column;padding:10px;gap:10px;box-sizing:border-box}
+.loez-embed-item iframe{display:block;width:100%;height:480px;border:0;border-radius:12px;background:#161616}
+.loez-embed-item a{display:block;text-align:center;color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:11px;border:1px solid #ff2020;border-radius:10px}
+.loez-tiktok-slide{min-height:480px;justify-content:center;align-items:center;text-align:center;background:linear-gradient(145deg,#151515,#300b12)}
+.loez-tiktok-slide h3{font-size:20px}.loez-tiktok-slide p{color:#ccc;font-size:14px}
+@media(max-width:480px){.loez-embed-item iframe{height:450px}}
 </style>
 </head>
 <body>
@@ -789,29 +795,22 @@ img, video {
 <!-- Vídeos LOEZ NOVO -->
 <section class="loez-videos">
 <h2 class="section-heading">VÍDEOS</h2>
-<div class="loez-video-slider">
-<article class="loez-video-item"><video controls playsinline preload="metadata"><source src="./videos/loez-instagram.mp4" type="video/mp4"></video></article>
-<article class="loez-video-item"><video controls playsinline preload="metadata"><source src="./videos/loez-oficial-web.mp4" type="video/mp4"></video></article>
-<article class="loez-video-item"><video controls playsinline preload="metadata"><source src="./videos/loez-pb-web.mp4" type="video/mp4"></video></article>
+<div class="loez-video-slider" aria-label="Carrossel de vídeos LOEZ">
+  <article class="loez-video-item loez-embed-item">
+    <iframe title="Vídeo 1 · LOEZ no Instagram" src="https://www.instagram.com/reel/DNlLvGXRHIL/embed/" loading="lazy" allowfullscreen></iframe>
+    <a href="https://www.instagram.com/reel/DNlLvGXRHIL/" target="_blank" rel="noopener noreferrer">Ver no Instagram ↗</a>
+  </article>
+  <article class="loez-video-item loez-embed-item">
+    <iframe title="Vídeo 2 · LOEZ no Instagram" src="https://www.instagram.com/reel/Dc3N-u3xsTA/embed/" loading="lazy" allowfullscreen></iframe>
+    <a href="https://www.instagram.com/reel/Dc3N-u3xsTA/" target="_blank" rel="noopener noreferrer">Ver no Instagram ↗</a>
+  </article>
+  <article class="loez-video-item loez-embed-item loez-tiktok-slide">
+    <h3>Vídeo 3 · TikTok</h3>
+    <p>Assista ao vídeo no perfil oficial.</p>
+    <a href="https://vt.tiktok.com/ZSbccH6fK/" target="_blank" rel="noopener noreferrer">Assistir no TikTok ↗</a>
+  </article>
 </div>
 <div class="loez-video-indicator">Deslize para ver mais vídeos →</div>
-<div class="loez-social-video-grid" aria-label="Vídeos das redes sociais">
-  <article class="loez-social-video">
-    <h3>Instagram · Reel 1</h3>
-    <iframe title="Reel 1 do LOEZ no Instagram" src="https://www.instagram.com/reel/DNlLvGXRHIL/embed/" loading="lazy" allowfullscreen></iframe>
-    <a href="https://www.instagram.com/reel/DNlLvGXRHIL/" target="_blank" rel="noopener noreferrer">Assistir no Instagram ↗</a>
-  </article>
-  <article class="loez-social-video">
-    <h3>Instagram · Reel 2</h3>
-    <iframe title="Reel 2 do LOEZ no Instagram" src="https://www.instagram.com/reel/Dc3N-u3xsTA/embed/" loading="lazy" allowfullscreen></iframe>
-    <a href="https://www.instagram.com/reel/Dc3N-u3xsTA/" target="_blank" rel="noopener noreferrer">Assistir no Instagram ↗</a>
-  </article>
-  <article class="loez-social-video loez-tiktok-card">
-    <h3>TikTok · Vídeo 3</h3>
-    <p>Assista ao vídeo oficial no TikTok.</p>
-    <a href="https://vt.tiktok.com/ZSbccH6fK/" target="_blank" rel="noopener noreferrer">Abrir vídeo no TikTok ↗</a>
-  </article>
-</div>
 </section>
 
 <!-- Presskit Oficial -->
