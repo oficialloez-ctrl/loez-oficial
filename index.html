@@ -852,6 +852,20 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-<script>document.querySelectorAll('.quick-socials .social-circle').forEach(function(a){a.addEventListener('click',function(){document.querySelectorAll('.quick-socials .social-circle').forEach(function(b){b.classList.remove('selected')});a.classList.add('selected')})})</script>
+<script>
+(function(){
+  const icons=[...document.querySelectorAll('.quick-socials .social-circle')];
+  const clear=()=>icons.forEach(icon=>icon.classList.remove('selected'));
+  document.addEventListener('touchmove',function(event){
+    if(!event.touches.length)return;
+    const finger=event.touches[0];
+    const hovered=document.elementFromPoint(finger.clientX,finger.clientY);
+    const active=hovered&&hovered.closest('.quick-socials .social-circle');
+    icons.forEach(icon=>icon.classList.toggle('selected',icon===active));
+  },{passive:true});
+  document.addEventListener('touchend',clear,{passive:true});
+  document.addEventListener('touchcancel',clear,{passive:true});
+})();
+</script>
 </body>
 </html>
