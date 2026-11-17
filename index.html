@@ -742,6 +742,25 @@ img, video {
 .photo-lightbox button{position:absolute;background:rgba(40,40,40,.85);color:#fff;border:1px solid #666;border-radius:50%;width:44px;height:44px;font-size:27px;cursor:pointer}
 .photo-lightbox .close{right:14px;top:14px}.photo-lightbox .prev{left:12px;top:50%}.photo-lightbox .next{right:12px;top:50%}
 .photo-lightbox .counter{position:absolute;bottom:15px;color:#ddd;font-size:14px}
+
+    /* Vídeo em destaque e lançamentos automáticos */
+    .loez-featured-video{padding:1rem;background:#111115;border:1px solid rgba(230,25,25,.4);border-radius:16px}
+    .loez-featured-video video{display:block;width:100%;aspect-ratio:16/9;max-height:520px;object-fit:contain;border-radius:12px;background:#000}
+    .loez-featured-video p{margin-top:8px;color:var(--text-muted);font-size:.8rem}
+    .loez-release-heading{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .loez-release-heading .highlight-label{margin:0}
+    .loez-release-link{display:inline-block;color:#fff;background:#157438;text-decoration:none;font-size:.78rem;font-weight:800;padding:.6rem .75rem;border-radius:9px}
+    .loez-release-status{color:var(--text-muted);font-size:.84rem;margin-top:.8rem}
+    .loez-release-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:1rem}
+    .loez-release{background:#1a1a20;border:1px solid #33333a;color:var(--text);text-decoration:none;border-radius:12px;padding:10px;display:flex;gap:10px;align-items:center}
+    .loez-release:hover,.loez-release:focus-visible{border-color:var(--spotify)}
+    .loez-release img{width:62px;height:62px;object-fit:cover;border-radius:8px;flex-shrink:0}
+    .loez-release strong{font-size:.85rem;line-height:1.3;display:block;overflow-wrap:anywhere}
+    .loez-release small{color:var(--text-muted);font-size:.75rem}
+    /* Corrige o iframe antes limitado artificialmente a 152px */
+    .spotify-player-wrap,.spotify-frame{height:352px!important;min-height:352px!important}
+    @media(max-width:500px){.loez-release-grid{grid-template-columns:1fr}.loez-featured-video{padding:.8rem}}
+
 </style>
 </head>
 <body>
@@ -774,7 +793,18 @@ img, video {
       </div>
     </div>
 
-    <!-- Player Oficial do Spotify do LOEZ -->
+    
+    <!-- Destaque de vídeo acima do Spotify -->
+    <section class="loez-featured-video" aria-label="Vídeo oficial LOEZ">
+      <h2 class="section-heading">LOEZ em vídeo</h2>
+      <video controls playsinline preload="metadata" poster="imagem_1.jpg" aria-label="Vídeo de apresentação do DJ LOEZ">
+        <source src="loez-oficial-web.mp4" type="video/mp4">
+        Seu navegador não suporta este vídeo.
+      </video>
+      <p>Vídeo oficial de apresentação</p>
+    </section>
+
+<!-- Player Oficial do Spotify do LOEZ -->
     <div class="highlight-card">
       <div class="highlight-label">Spotify Oficial</div>
       <div class="spotify-player-wrap">
@@ -788,7 +818,18 @@ img, video {
     </div>
 
     
-    <!-- Galeria de Shows -->
+    
+    <!-- Lançamentos sincronizados do Spotify, quando a API estiver configurada -->
+    <section class="highlight-card" aria-labelledby="loezLatestHeading">
+      <div class="loez-release-heading">
+        <h2 class="highlight-label" id="loezLatestHeading">Últimos lançamentos</h2>
+        <a class="loez-release-link" href="https://open.spotify.com/artist/6dl2N1fEzJjBRmLcF1Xfb0/discography/all" target="_blank" rel="noopener noreferrer">Ver discografia ↗</a>
+      </div>
+      <p id="loezReleaseStatus" class="loez-release-status" role="status">Buscando novos lançamentos…</p>
+      <div id="loezReleaseGrid" class="loez-release-grid" hidden></div>
+    </section>
+
+<!-- Galeria de Shows -->
     <div>
       <h2 class="section-heading">Galeria de Shows</h2>
       <div class="photo-grid">
@@ -907,5 +948,35 @@ box.addEventListener('click',e=>{if(e.target===box)close()});document.addEventLi
 box.addEventListener('touchstart',e=>{initialX=e.touches[0].clientX},{passive:true});box.addEventListener('touchend',e=>{if(initialX===null)return;const dx=e.changedTouches[0].clientX-initialX;if(Math.abs(dx)>45)show(current+(dx<0?1:-1));initialX=null},{passive:true});
 })();
 </script>
+
+<script>
+(function(){
+  const grid=document.getElementById('loezReleaseGrid');
+  const status=document.getElementById('loezReleaseStatus');
+  if(!grid||!status) return;
+  fetch('/api/releases',{headers:{Accept:'application/json'}})
+    .then(r=>r.ok?r.json():Promise.reject(new Error('not_ready')))
+    .then(data=>{
+      if(!Array.isArray(data.releases)||!data.releases.length) throw new Error('empty');
+      grid.replaceChildren();
+      for(const release of data.releases) {
+        const a=document.createElement('a');
+        a.className='loez-release';
+        a.href=typeof release.url==='string'&&release.url.startsWith('https://open.spotify.com/album/')?release.url:'https://open.spotify.com/artist/6dl2N1fEzJjBRmLcF1Xfb0';
+        a.target='_blank';a.rel='noopener noreferrer';
+        if(typeof release.cover==='string'&&release.cover.startsWith('https://i.scdn.co/')){
+          const image=document.createElement('img');image.src=release.cover;image.alt='Capa do lançamento';image.loading='lazy';a.appendChild(image);
+        }
+        const box=document.createElement('div');
+        const title=document.createElement('strong');title.textContent=String(release.title||'Ouvir lançamento');box.appendChild(title);
+        const date=document.createElement('small');date.textContent=String(release.date||'').slice(0,10).split('-').reverse().join('/');box.appendChild(date);
+        a.appendChild(box);grid.appendChild(a);
+      }
+      status.hidden=true;grid.hidden=false;
+    })
+    .catch(()=>{status.textContent='Veja as músicas mais recentes na discografia oficial do Spotify.';grid.hidden=true;});
+})();
+</script>
+
 </body>
 </html>
