@@ -797,7 +797,7 @@ img, video {
     <!-- Destaque de vídeo acima do Spotify -->
     <section class="loez-featured-video" aria-label="Vídeo oficial LOEZ">
       <h2 class="section-heading">LOEZ em vídeo</h2>
-      <video controls playsinline preload="metadata" poster="imagem_1.jpg" aria-label="Vídeo de apresentação do DJ LOEZ">
+      <video id="loezFeaturedVideo" controls playsinline preload="metadata" aria-label="Vídeo de apresentação do DJ LOEZ">
         <source src="loez-oficial-web.mp4" type="video/mp4">
         Seu navegador não suporta este vídeo.
       </video>
@@ -978,5 +978,38 @@ box.addEventListener('touchstart',e=>{initialX=e.touches[0].clientX},{passive:tr
 })();
 </script>
 
+<script>
+/* A miniatura é um quadro real do próprio vídeo, capturado sem reprodução automática. */
+(function(){
+  const video=document.getElementById('loezFeaturedVideo');
+  if(!video)return;
+  const frame=document.createElement('video');
+  frame.preload='auto';
+  frame.muted=true;
+  frame.playsInline=true;
+  frame.src=video.querySelector('source').getAttribute('src');
+  let finished=false;
+  const capture=()=>{
+    if(finished||!frame.videoWidth||!frame.videoHeight)return;
+    try{
+      const canvas=document.createElement('canvas');
+      const ratio=Math.min(1,960/frame.videoWidth);
+      canvas.width=Math.round(frame.videoWidth*ratio);
+      canvas.height=Math.round(frame.videoHeight*ratio);
+      canvas.getContext('2d').drawImage(frame,0,0,canvas.width,canvas.height);
+      video.poster=canvas.toDataURL('image/jpeg',0.83);
+      finished=true;
+      frame.removeAttribute('src');frame.load();
+    }catch(error){console.warn('Não foi possível gerar miniatura do vídeo.',error);}
+  };
+  frame.addEventListener('loadedmetadata',()=>{
+    if(!Number.isFinite(frame.duration)||frame.duration<=0)return;
+    try{frame.currentTime=Math.min(2.5,Math.max(.1,frame.duration*.12));}
+    catch(error){capture();}
+  },{once:true});
+  frame.addEventListener('seeked',capture,{once:true});
+  frame.addEventListener('error',()=>{frame.removeAttribute('src');});
+})();
+</script>
 </body>
 </html>
